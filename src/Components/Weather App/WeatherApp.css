@@ -17,7 +17,7 @@
 .top-bar input {
     display: flex;
     width: 360px;
-    height: 80px;
+    height: 60px;
     background: #ebfffc;
     border: none;
     outline: none;
@@ -32,15 +32,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
     background: #ebfffc;
     border-radius: 40px;
     cursor: pointer;
 }
 
 .weather-image {
-    margin-top: 25px;
+    margin-top: 80px;
     display: flex;
     justify-content: center;
 }
@@ -49,7 +49,7 @@
     display: flex;
     justify-content: center;
     color: white;
-    font-size: 80px;
+    font-size: 70px;
     font-weight: 400;
 }
 
@@ -83,4 +83,9 @@
 .text {
     font-size: 20px;
     font-weight: 300px;
+}
+
+.weather-image img {
+    width: 180px;
+    height: 180px;
 }
