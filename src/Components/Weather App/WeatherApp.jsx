@@ -5,7 +5,7 @@ import sun_icon from '../Assets/sun.png'
 import cloudy_icon from '../Assets/cloudy.png'
 import drizzle_icon from '../Assets/drizzle.png'
 import rain_icon from '../Assets/rain.png'
-import rain128_icon from '../Assets/rain.png'
+import humidity_icon from '../Assets/humidity.png'
 import snow_icon from '../Assets/snow.png'
 import storm_icon from '../Assets/storm.png'
 import wind_icon from '../Assets/wind.png'
@@ -56,7 +56,7 @@ const WeatherApp = () => {
         }
         else if (data.weather[0].icon==='09d' || data.weather[0].icon==='09n')
         {
-            setWicon(rain128_icon);
+            setWicon(rain_icon);
         }
         else if (data.weather[0].icon==='10d' || data.weather[0].icon==='10n')
         {
@@ -83,13 +83,13 @@ const WeatherApp = () => {
             <div className="weather-image">
                 <img src={wicon} />
             </div>
-            <div className="weather-temp">10°C</div>
-            <div className="weather-location">Moscow</div>
+            <div className="weather-temp">0°C</div>
+            <div className="weather-location">City</div>
             <div className="data-container">
                 <div className="element">
-                    <img src={rain_icon} className="icon" />
+                    <img src={humidity_icon} className="icon" />
                     <div className="data">
-                        <div className="humidity-percent">50%</div>
+                        <div className="humidity-percent">0%</div>
                         <div className="text">Влажность</div>
                     </div>
                 </div>
@@ -97,7 +97,7 @@ const WeatherApp = () => {
                 <div className="element">
                     <img src={wind_icon} className="icon" />
                     <div className="data">
-                        <div className="wind-speed">20 км/ч</div>
+                        <div className="wind-speed">0 км/ч</div>
                         <div className="text">Скорость ветра</div>
                     </div>
                 </div>
