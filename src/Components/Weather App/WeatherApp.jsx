@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './WeatherApp.css'
 import search_icon from '../Assets/search.png'
 import sun_icon from '../Assets/sun.png'
@@ -38,32 +38,25 @@ const WeatherApp = () => {
         temperature[0].innerHTML = Math.floor(data.main.temp)+'°C'
         location[0].innerHTML = data.name
 
-        switch (data.weather[0].icon || data.weather[0].icon) {
-            case '02d' || '02n': 
-                setWicon(cloudy_icon) 
-                break
-            case '03d' || '03n':
-                setWicon(cloudy_icon) 
-                break
-            case '04d' || '04n':
-                setWicon(cloudy_icon) 
-                break
-            case '09d' || '09n':
-                setWicon(drizzle_icon)
-                break
-            case '10d' || '10n':
-                setWicon(rain_icon)
-                break
-            case '11d' || '11n': 
-                setWicon(storm_icon)
-                break
-            case '13d' || '13n': 
-                setWicon(snow_icon)
-                break
-            default: 
-                setWicon(sun_icon)
-                break
+        const iconMapping = {
+            '01d': sun_icon,
+            '01n': sun_icon,
+            '02d': cloudy_icon,
+            '02n': cloudy_icon,
+            '03d': drizzle_icon,
+            '03n': drizzle_icon,
+            '04d': drizzle_icon,
+            '04n': drizzle_icon,
+            '09d': rain_icon,
+            '09n': rain_icon,
+            '10d': storm_icon,
+            '10n': storm_icon,
+            '13d': snow_icon,
+            '13n': snow_icon,
         }
+        
+        const icon = data.weather[0].icon;
+        setWicon(iconMapping[icon] || sun_icon);
     }
 
     return(
