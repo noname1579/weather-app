@@ -18,12 +18,12 @@ const WeatherApp = () => {
     const [wicon, setWicon] = useState(cloudy_icon);
 
     const search = async () => {
-        const element = document.getElementsByClassName("cityInput");
-        if (element[0].value==="")
-        {
-            return 0;
-        }
-        let url = `https://api.openweathermap.org/data/2.5/weather?q=${element[0].value}&units=Metric&appid=${api_key}`;
+
+        const element = document.getElementsByClassName("cityInput")
+
+        if (element[0].value==="") return 0;
+
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${element[0].value}&units=Metric&appid=${api_key}`;
 
         let response = await fetch(url);
         let data = await response.json();
@@ -33,42 +33,36 @@ const WeatherApp = () => {
         const temperature = document.getElementsByClassName('weather-temp');
         const location = document.getElementsByClassName('weather-location');
 
-        humidity[0].innerHTML = Math.floor(data.main.humidity)+'%';
-        wind[0].innerHTML = Math.floor(data.wind.speed)+' км/ч';
-        temperature[0].innerHTML = Math.floor(data.main.temp)+'°C';
-        location[0].innerHTML = data.name;
+        humidity[0].innerHTML = Math.floor(data.main.humidity)+'%'
+        wind[0].innerHTML = Math.floor(data.wind.speed)+' км/ч'
+        temperature[0].innerHTML = Math.floor(data.main.temp)+'°C'
+        location[0].innerHTML = data.name
 
-        if (data.weather[0].icon==='01d' || data.weather[0].icon==='01n')
-        {
-            setWicon(sun_icon);
-        }
-        else if (data.weather[0].icon==='02d' || data.weather[0].icon==='02n')
-        {
-            setWicon(cloudy_icon);
-        }
-        else if (data.weather[0].icon==='03d' || data.weather[0].icon==='03n')
-        {
-            setWicon(drizzle_icon);
-        }
-        else if (data.weather[0].icon==='04d' || data.weather[0].icon==='04n')
-        {
-            setWicon(drizzle_icon);
-        }
-        else if (data.weather[0].icon==='09d' || data.weather[0].icon==='09n')
-        {
-            setWicon(rain_icon);
-        }
-        else if (data.weather[0].icon==='10d' || data.weather[0].icon==='10n')
-        {
-            setWicon(storm_icon);
-        }
-        else if (data.weather[0].icon==='13d' || data.weather[0].icon==='13n')
-        {
-            setWicon(snow_icon);
-        }
-        else
-        {
-            setWicon(sun_icon);
+        switch (data.weather[0].icon || data.weather[0].icon) {
+            case '02d' || '02n': 
+                setWicon(cloudy_icon) 
+                break
+            case '03d' || '03n':
+                setWicon(cloudy_icon) 
+                break
+            case '04d' || '04n':
+                setWicon(cloudy_icon) 
+                break
+            case '09d' || '09n':
+                setWicon(drizzle_icon)
+                break
+            case '10d' || '10n':
+                setWicon(rain_icon)
+                break
+            case '11d' || '11n': 
+                setWicon(storm_icon)
+                break
+            case '13d' || '13n': 
+                setWicon(snow_icon)
+                break
+            default: 
+                setWicon(sun_icon)
+                break
         }
     }
 
@@ -84,7 +78,7 @@ const WeatherApp = () => {
                 <img src={wicon} />
             </div>
             <div className="weather-temp">0°C</div>
-            <div className="weather-location">City</div>
+            <div className="weather-location">-</div>
             <div className="data-container">
                 <div className="element">
                     <img src={humidity_icon} className="icon" />
